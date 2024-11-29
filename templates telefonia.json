@@ -1,0 +1,904 @@
+{
+    "zabbix_export": {
+        "version": "7.2",
+        "template_groups": [
+            {
+                "uuid": "7df96b18c230490a9a0a9e2307226338",
+                "name": "Templates"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "1b14c9083b304ee8bc3ee068cbc8f044",
+                "template": "SBC_OCOM",
+                "name": "SBC_OCOM",
+                "groups": [
+                    {
+                        "name": "Templates"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "7a50ef56edb64918a4ceec34f4caa6d4",
+                        "name": "Estado da Placa Controladora",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.3.1.1.0",
+                        "key": "apenvMonl2CState",
+                        "history": "90d",
+                        "triggers": [
+                            {
+                                "uuid": "ddb12ce9492a4a8b99949675f7d0f41d",
+                                "expression": "last(/SBC_OCOM/apenvMonl2CState)=5",
+                                "name": "Estado da Placa Controladora - CRITICAL",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "e9e00c21e38e4ea88f124b423a5c14ea",
+                                "expression": "last(/SBC_OCOM/apenvMonl2CState)=4",
+                                "name": "Estado da Placa Controladora - MAJOR",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "0211dae8117f4c6b9a54695b333dab91",
+                                "expression": "last(/SBC_OCOM/apenvMonl2CState)=3",
+                                "name": "Estado da Placa Controladora - MINOR",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "6c911a176e014dacacbea38858ab71b3",
+                                "expression": "last(/SBC_OCOM/apenvMonl2CState)=8",
+                                "name": "Estado da Placa Controladora - Not Functioning",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "bbd0ea45fe02453ebecdc5b9cdbfdaef",
+                                "expression": "last(/SBC_OCOM/apenvMonl2CState)=7",
+                                "name": "Estado da Placa Controladora - Not Present",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "13f098f594a74cc19c3a49725df7d556",
+                                "expression": "last(/SBC_OCOM/apenvMonl2CState)=5",
+                                "name": "Estado da Placa Controladora - Shutdown",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "2ddda05f052d42f4a2b0b69be816743c",
+                                "expression": "last(/SBC_OCOM/apenvMonl2CState)=9",
+                                "name": "Estado da Placa Controladora - Unknown",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1a9451c4c41e4589b98262230c45cfdf",
+                        "name": "Licen\u00e7a Capacity",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.5.1.1.1.3.1",
+                        "key": "apLicenseCapacity",
+                        "history": "90d"
+                    },
+                    {
+                        "uuid": "f83be63f4da049babce9518c9fab7e14",
+                        "name": "Quantidade total de transferencias SRVCC com falha",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.15.1.1.3.2.0",
+                        "key": "apSipSRVCCStatsTotalFailed",
+                        "history": "90d"
+                    },
+                    {
+                        "uuid": "036f4ab494874bc3b4746e0dc7dbd16a",
+                        "name": "Quantidade total de transferencias SRVCC com suceso",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.15.1.1.3.1.0",
+                        "key": "apSipSRVCCStatsTotalSuccess",
+                        "history": "90d"
+                    },
+                    {
+                        "uuid": "2a30c13ee03d4c8e8aa8ddf31898b455",
+                        "name": "Porcentagem de utiliza\u00e7\u00e3o da tabela ARP (CAM)",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.8.0",
+                        "key": "apSysARPCapacity",
+                        "history": "90d",
+                        "units": "%"
+                    },
+                    {
+                        "uuid": "0166b5bbc6394e86a542de07fd108a58",
+                        "name": "Porcentagem de utiliza\u00e7\u00e3o da CPU",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.1.0",
+                        "key": "apSysCPUUtil",
+                        "history": "90d",
+                        "units": "%",
+                        "triggers": [
+                            {
+                                "uuid": "f59f89e43a67428bb5c6844f6f35e6a4",
+                                "expression": "last(/SBC_OCOM/apSysCPUUtil)>70",
+                                "name": "Utiliza\u00e7\u00e3o da CPU acima de 70%",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "6b39f1c51f9044a4aa9b9ad44757aac5",
+                        "name": "Quantidade total de liga\u00e7\u00f5es em andamento por segundo",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.5.0",
+                        "key": "apSysGlobalCPS",
+                        "history": "90d",
+                        "triggers": [
+                            {
+                                "uuid": "a45aea56b05d4b9682a762ea49ecf423",
+                                "expression": "last(/SBC_OCOM/apSysGlobalCPS)>1700",
+                                "name": "Quantidade acima de 1.700 liga\u00e7\u00f5es em andamento por segundo",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "89a24e5a6c2c470fa7805965c6380ae9",
+                                "expression": "last(/SBC_OCOM/apSysGlobalCPS)>800",
+                                "name": "Quantidade acima de 800 liga\u00e7\u00f5es em andamento por segundo",
+                                "priority": "WARNING"
+                            },
+                            {
+                                "uuid": "b77784d230194dbe92a1cea247d97a68",
+                                "expression": "last(/SBC_OCOM/apSysGlobalCPS)>=1800",
+                                "name": "Quantidade de 1.800 liga\u00e7\u00f5es em andamento por segundo",
+                                "priority": "DISASTER"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "ddc90b025dca4bacb0b33c13a0808824",
+                        "name": "Percentual de integridade do sistema",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.3.0",
+                        "key": "apSysHealthScore",
+                        "history": "90d",
+                        "units": "%",
+                        "triggers": [
+                            {
+                                "uuid": "03b3324661df40288f425f4ec268ddbd",
+                                "expression": "last(/SBC_OCOM/apSysHealthScore)<50",
+                                "name": "Percentual de integridade do sistema abaixo dos 50%",
+                                "priority": "DISASTER"
+                            },
+                            {
+                                "uuid": "fa76c308372842febb2b320c2a55857c",
+                                "expression": "last(/SBC_OCOM/apSysHealthScore)<100",
+                                "name": "Percentual de integridade do sistema abaixo dos 100%",
+                                "priority": "AVERAGE"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "7442a45def9e45dd85d9d07922a5127e",
+                        "name": "Porcentagem de liga\u00e7\u00f5es em andamento",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.10.0",
+                        "key": "apSysLicenseCapacity",
+                        "history": "90d",
+                        "units": "%",
+                        "triggers": [
+                            {
+                                "uuid": "a2351d5b14fe43909864038d5adb2d19",
+                                "expression": "last(/SBC_OCOM/apSysLicenseCapacity)<=2 and dayofweek()>=1 and dayofweek()<=5 and time()>=080000 and time()<=084500",
+                                "name": "Porcentagem de liga\u00e7\u00f5es em andamento abaixo de 3%",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "a4319e8a7d794d2da9e9b408efbf8ed1",
+                                "expression": "last(/SBC_OCOM/apSysLicenseCapacity)<=3 and dayofweek()>=1 and dayofweek()<=5 and time()>=173100 and time()<=180000",
+                                "name": "Porcentagem de liga\u00e7\u00f5es em andamento abaixo de 4%",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "a97a1aae361a4c748945ae36c0d650c3",
+                                "expression": "last(/SBC_OCOM/apSysLicenseCapacity)<=3 and dayofweek()>=5 and dayofweek()<=5 and time()>=170100 and time()<=1730000",
+                                "name": "Porcentagem de liga\u00e7\u00f5es em andamento abaixo de 4%",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "8421c2a8e2f7409e9f1965798e3ac126",
+                                "expression": "last(/SBC_OCOM/apSysLicenseCapacity)<=4 and dayofweek()>=1 and dayofweek()<=4 and time()>=084600 and time()<=173000",
+                                "name": "Porcentagem de liga\u00e7\u00f5es em andamento abaixo de 5%",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "8df9e3215ed0493791f904a3c65c949d",
+                                "expression": "last(/SBC_OCOM/apSysLicenseCapacity)<=4 and dayofweek()>=5 and dayofweek()<=5 and time()>=084600 and time()<=170000",
+                                "name": "Porcentagem de liga\u00e7\u00f5es em andamento abaixo de 5%",
+                                "priority": "HIGH"
+                            },
+                            {
+                                "uuid": "f1bfc3a0087d4c0c9b9b530731835afe",
+                                "expression": "last(/SBC_OCOM/apSysLicenseCapacity)>70",
+                                "name": "Porcentagem de liga\u00e7\u00f5es em andamento acima de 70%",
+                                "priority": "WARNING"
+                            },
+                            {
+                                "uuid": "461cc95dc4ab4417b2a7b8e999c313a3",
+                                "expression": "last(/SBC_OCOM/apSysLicenseCapacity)>80",
+                                "name": "Porcentagem de liga\u00e7\u00f5es em andamento acima de 80%",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "1af9293f755141768cab36c03577b3eb",
+                        "name": "Porcentagem de utiliza\u00e7\u00e3o de mem\u00f3ria",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.2.0",
+                        "key": "apSysMemoryUti",
+                        "history": "90d",
+                        "triggers": [
+                            {
+                                "uuid": "40f3e13baf374afd98c4c8d559d60858",
+                                "expression": "last(/SBC_OCOM/apSysMemoryUti)>70",
+                                "name": "Utiliza\u00e7\u00e3o de mem\u00f3ria acima de 70%",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "e9cff56b343845ff88a79d8fdc35ca04",
+                        "name": "Porcentagem da tabela NAT no conte\u00fado Mem\u00f3ria Endere\u00e7avel (CAM)",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.7.0",
+                        "key": "apSysNATCapacity",
+                        "history": "90d",
+                        "units": "%"
+                    },
+                    {
+                        "uuid": "a4b60cdb871d4292aa4047f8e42ca619",
+                        "name": "Status do SD - Ativo",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.4.0",
+                        "key": "apSysRedundancy",
+                        "history": "90d",
+                        "triggers": [
+                            {
+                                "uuid": "64a13b411b744372afcca79bff640382",
+                                "expression": "last(/SBC_OCOM/apSysRedundancy)<>3",
+                                "name": "Status do SD - Standby",
+                                "priority": "INFO"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "cae0ce9277de486cbb258b891bfcd91a",
+                        "name": "Quantidade de mensagens rejeitadas pelo SBC devido a crit\u00e9rios de correspond\u00eancia",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.18.0",
+                        "key": "apSysRejectedMessages",
+                        "history": "90d"
+                    },
+                    {
+                        "uuid": "49c4ee492d4446438237c61705b97637",
+                        "name": "Quantidade de Endpoints SIP rebaixados de fila confi\u00e1vel para fila n\u00e3o confi\u00e1vel",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.19.0",
+                        "key": "apSysSipEndptDemTrustToUntrust",
+                        "history": "90d"
+                    },
+                    {
+                        "uuid": "38001a799d44420fbcdd0df7140bef28",
+                        "name": "Quantidade de Endpoints SIP rebaixados de fila n\u00e3o confi\u00e1vel para negados",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.20.0",
+                        "key": "apSysSipEndptDemUntrustToDeny",
+                        "history": "90d"
+                    },
+                    {
+                        "uuid": "e1842cda04544ed08f8610a5306f4985",
+                        "name": "Quantidade de contatos registrados em cache",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.11.0",
+                        "key": "apSysSipStatsActiveLocalContacts",
+                        "history": "90d"
+                    },
+                    {
+                        "uuid": "a81d2b6a30724bf1b3e002c5043b2b82",
+                        "name": "N\u00e3o suportado pelo Net-Net 9200",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.1.9.0",
+                        "key": "apSysState",
+                        "history": "90d"
+                    },
+                    {
+                        "uuid": "f1beec4580b34cfab6d69d40564f7f3c",
+                        "name": "Tempo em segundos que o roteador \u00e9 util como padr\u00e3o - 10.11.243.161",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.2.1.4.37.1.4.1.4.10.11.243.161.12338",
+                        "key": "ipDefaultRouterLifetime.10.11.243.161",
+                        "history": "90d",
+                        "triggers": [
+                            {
+                                "uuid": "3aef84174389441bb38c6ed011db5b89",
+                                "expression": "last(/SBC_OCOM/ipDefaultRouterLifetime.10.11.243.161)=0",
+                                "name": "Tempo 0 em segundos que o roteador \u00e9 util como padr\u00e3o - 10.11.243.161",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "3b444b6e885f465cb6572345b8680b94",
+                        "name": "Tempo em segundos que o roteador \u00e9 util como padr\u00e3o - 10.12.252.41",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.2.1.4.37.1.4.1.4.10.12.252.41.13676",
+                        "key": "ipDefaultRouterLifetime.10.12.252.41",
+                        "history": "90d",
+                        "triggers": [
+                            {
+                                "uuid": "ad98956cf1bf412493ffbf5624518dea",
+                                "expression": "last(/SBC_OCOM/ipDefaultRouterLifetime.10.12.252.41)=0",
+                                "name": "Tempo 0 em segundos que o roteador \u00e9 util como padr\u00e3o - 10.12.252.41",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "f969635014a84bfea47787d0e2b211bb",
+                        "name": "Tempo em segundos que o roteador \u00e9 util como padr\u00e3o - 10.252.2.153",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.2.1.4.37.1.4.1.4.10.252.2.153.32340",
+                        "key": "ipDefaultRouterLifetime.10.252.2.153",
+                        "history": "90d",
+                        "triggers": [
+                            {
+                                "uuid": "76030415c5234087b810376e7d5f615c",
+                                "expression": "last(/SBC_OCOM/ipDefaultRouterLifetime.10.252.2.153)=0",
+                                "name": "Tempo 0 em segundos que o roteador \u00e9 util como padr\u00e3o - 10.252.2.153",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "70e7ffad1c794328945d16bec9bf7c3b",
+                        "name": "Tempo em segundos que o roteador \u00e9 util como padr\u00e3o - 10.252.2.161",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.2.1.4.37.1.4.1.4.10.252.2.161.42240",
+                        "key": "ipDefaultRouterLifetime.10.252.2.161",
+                        "history": "90d",
+                        "triggers": [
+                            {
+                                "uuid": "429c6242550142eba06aa9bf0b465b83",
+                                "expression": "last(/SBC_OCOM/ipDefaultRouterLifetime.10.252.2.161)=0",
+                                "name": "Tempo 0 em segundos que o roteador \u00e9 util como padr\u00e3o - 10.252.2.161",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "81d977b0f9704c3ca2b72c70a8e42dac",
+                        "name": "Tempo em segundos que o roteador \u00e9 util como padr\u00e3o - 10.252.62.33",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": ".1.3.6.1.2.1.4.37.1.4.1.4.10.252.62.33.23962",
+                        "key": "ipDefaultRouterLifetime.10.252.62.33",
+                        "history": "90d",
+                        "triggers": [
+                            {
+                                "uuid": "ec7ec11a95d24d70a0a88be360c600bd",
+                                "expression": "last(/SBC_OCOM/ipDefaultRouterLifetime.10.252.62.33)=0",
+                                "name": "Tempo 0 em segundos que o roteador \u00e9 util como padr\u00e3o - 10.252.62.33",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    }
+                ],
+                "discovery_rules": [
+                    {
+                        "uuid": "7b5140c5452e4b4b99c243e288e1fb26",
+                        "name": "Servidor DNS",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "discovery[{#DNS1_NAME},.1.3.6.1.4.1.9148.3.16.1.2.2.1.1.1.4.83.49.80.48.1.4.10.123.224.11,{#DNS2_NAME},.1.3.6.1.4.1.9148.3.16.1.2.2.1.1.1.4.83.49.80.48.1.4.10.123.225.11,{#DNS3_NAME},.1.3.6.1.4.1.9148.3.16.1.2.2.1.1.1.4.83.49.80.48.1.4.10.123.226.11]",
+                        "key": "apAppsDnsInterfaceName.discovery",
+                        "lifetime_type": "DELETE_IMMEDIATELY",
+                        "item_prototypes": [
+                            {
+                                "uuid": "24328224ee9a4f7da41d23e6100913af",
+                                "name": "IP do DNS - {#DNS1_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.16.1.2.2.1.1.3.4.83.49.80.48.1.4.10.123.224.11.{#SNMPINDEX}",
+                                "key": "apAppsDnsServerInetAddress.[{#SNMPINDEX}]",
+                                "value_type": "CHAR"
+                            },
+                            {
+                                "uuid": "5e0c051d770048b08fc84064c9f32d7b",
+                                "name": "IP do DNS - {#DNS2_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.16.1.2.2.1.1.3.4.83.49.80.48.1.4.10.123.225.11.{#SNMPINDEX}",
+                                "key": "apAppsDnsServerInetAddress2.[{#SNMPINDEX}]",
+                                "value_type": "CHAR"
+                            },
+                            {
+                                "uuid": "5a40b707a24740fb9782a68d7de809fb",
+                                "name": "IP do DNS - {#DNS3_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.16.1.2.2.1.1.3.4.83.49.80.48.1.4.10.123.226.11.{#SNMPINDEX}",
+                                "key": "apAppsDnsServerInetAddress3.[{#SNMPINDEX}]",
+                                "value_type": "CHAR"
+                            },
+                            {
+                                "uuid": "1e3b84d291b748d4be6b241ce76026f3",
+                                "name": "Status do DNS  10.123.224.11 - {#DNS1_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.16.1.2.2.1.1.3.4.83.49.80.48.1.4.10.123.224.11.{#SNMPINDEX}",
+                                "key": "apAppsDnsServerStatus1.[{#SNMPINDEX}]",
+                                "trigger_prototypes": [
+                                    {
+                                        "uuid": "9920dbea7ac24ba997af3e7acd3b6de1",
+                                        "expression": "last(/SBC_OCOM/apAppsDnsServerStatus1.[{#SNMPINDEX}])=1",
+                                        "name": "Status do DNS 10.123.224.11 - Lowerpriority -  {#DNS1_NAME}",
+                                        "priority": "WARNING"
+                                    },
+                                    {
+                                        "uuid": "25181c40b5f24e309752814d4eb9f3cd",
+                                        "expression": "last(/SBC_OCOM/apAppsDnsServerStatus1.[{#SNMPINDEX}])=2",
+                                        "name": "Status do DNS 10.123.224.11 - Oosunreachable -  {#DNS1_NAME}",
+                                        "priority": "WARNING"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "59bf8ecde2f84285ae60e06556f9eeda",
+                                "name": "Status do DNS  10.123.225.11 - {#DNS2_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.16.1.2.2.1.1.3.4.83.49.80.48.1.4.10.123.225.11.{#SNMPINDEX}",
+                                "key": "apAppsDnsServerStatus2[{#SNMPINDEX}]",
+                                "trigger_prototypes": [
+                                    {
+                                        "uuid": "713f36468d034fd69802d52fa6affdcf",
+                                        "expression": "last(/SBC_OCOM/apAppsDnsServerStatus2[{#SNMPINDEX}])=1",
+                                        "name": "Status do DNS 10.123.225.11 - Lowerpriority - {#DNS2_NAME}",
+                                        "priority": "WARNING"
+                                    },
+                                    {
+                                        "uuid": "1de5577f438f4cceb626c5d138ddbd1e",
+                                        "expression": "last(/SBC_OCOM/apAppsDnsServerStatus2[{#SNMPINDEX}])=2",
+                                        "name": "Status do DNS 10.123.225.11 - Oosunreachable - {#DNS2_NAME}",
+                                        "priority": "WARNING"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "4afd0997b6ea440d9dbef1812fd43830",
+                                "name": "Status do DNS  10.123.226.11 - {#DNS3_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.16.1.2.2.1.1.3.4.83.49.80.48.1.4.10.123.226.11.{#SNMPINDEX}",
+                                "key": "apAppsDnsServerStatus3[{#SNMPINDEX}]",
+                                "trigger_prototypes": [
+                                    {
+                                        "uuid": "baebd8f6cc084a25b8cdf9d669919cb8",
+                                        "expression": "last(/SBC_OCOM/apAppsDnsServerStatus3[{#SNMPINDEX}])=1",
+                                        "name": "Status do DNS 10.123.226.11 - Lowerpriority - {#DNS3_NAME}",
+                                        "priority": "WARNING"
+                                    },
+                                    {
+                                        "uuid": "1cb2ec40bbc84b92b3cb631038f44fce",
+                                        "expression": "last(/SBC_OCOM/apAppsDnsServerStatus3[{#SNMPINDEX}])=2",
+                                        "name": "Status do DNS 10.123.226.11 - Oosunreachable - {#DNS3_NAME}",
+                                        "priority": "WARNING"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "305f1a3f364a46ce83293453d4a9c694",
+                        "name": "Realm",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "discovery[{#REALM_NAME},.1.3.6.1.4.1.9148.3.2.1.2.4.1.2]",
+                        "key": "apSigRealmStatsRealmName.discovery",
+                        "lifetime_type": "DELETE_IMMEDIATELY",
+                        "item_prototypes": [
+                            {
+                                "uuid": "9ec81825d0e14c058ed9d1ae10f12dbd",
+                                "name": "Quantidade de contatos registrados em cache - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.31.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsActiveLocalContacts.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "e6461e015e144ea9ba486be058d44610",
+                                "name": "Quantidade de Subscriptions ativos - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.32.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsActiveSubscriptions.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "df6a82a4da0748aaafca07d0eb2ce685",
+                                "name": "M\u00e9dia de QoS RFactor obervada durante o periodo - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.24.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsAverageQoSRFactor.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "5cfd0e59557a4c2993b7a475c66c2984",
+                                "name": "Taxa media de chamadas de entrada durante o periodo no CPS - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.10.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsAverageRateInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "d5efe6e9ef764646b1a684983bd11574",
+                                "name": "Taxa media de chamadas de saida durante o periodo no CPS - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.14.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsAverageRateOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "82fa9529b90f452a88b6249a4b90c18c",
+                                "name": "Quantidade de chamadas de entrada ativas - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.3.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsCurrentActiveSessionsInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "2045450d00564a6dbf5d0caaf6ad515f",
+                                "name": "Quantidade de chamadas de saida ativas - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.5.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsCurrentActiveSessionsOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "1527e43070d14144b6b6bf178d755ad6",
+                                "name": "Peg counts of number of times the Critical Rfactor  threshold was exceeded during the period - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.28.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsCurrentCriticalRFactorExceeded.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "445517d58d6245c29d994c64b33f571b",
+                                "name": "Peg counts of number of times the Major Rfactor threshold was exceeded during the period - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.26.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsCurrentMajorRFactorExceeded.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "b573ec1d0b0d46949aa0d4567ca2b4df",
+                                "name": "Taxa de chamadas de entrada no CPS - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.4.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsCurrentSessionRateInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "f5d21d8dd30e4f63bfa8547f0e883f31",
+                                "name": "Taxa de chamadas de saida no CPS - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.6.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsCurrentSessionRateOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "c1b8ac49ea2e4c7dac3b66e968ff7f9f",
+                                "name": "Taxa maxima de intermintencia do trafego durante o periodo (entrada e saida) - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.15.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsMaxBurstRate.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "6849aad9c9014e079afdb2d728d497fa",
+                                "name": "Quantidade maxima de Subscri\u00e7\u00f5es ativas - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.34.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsMaximumActiveSubscriptions.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "936c1bcf72894dba9ee7cd2e2e3c67a9",
+                                "name": "Maximo de QoS RFactor obervada durante o periodo - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.25.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsMaximumQoSRFactor.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "edd21fc175814b9c905da3861b6b36cf",
+                                "name": "Quantidade de minutos mensais restantes no pool por calendario mes do Realm - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.21.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsMinutesLeft.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "fcb398c0bf3c4853bb283e60bd64e4a0",
+                                "name": "Contagem de PEG do numero de chamadas rejeitadas devido as restri\u00e7oes de minutos mensais excedidas - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.22.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsMinutesReject.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "9da83b2711ec430884fb66b45e87f0b1",
+                                "name": "Quantidade total de chamadas respondidas no periodo - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.17.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsPeriodAnswers.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "bf69f93905ac40cfa74840aa2bd2e39b",
+                                "name": "Answer-to-seizure expressa em porcentagem - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.18.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsPeriodASR.[{#SNMPINDEX}]",
+                                "units": "%"
+                            },
+                            {
+                                "uuid": "a29d1ea96efd45ecac69e46013474d87",
+                                "name": "Maior quantidade de chamadas de entrada simultaneas durante o periodo - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.9.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsPeriodHighInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "df8b1c20233c4dd3ba9f30c0b8336b87",
+                                "name": "Maior quantidade de chamadas de saida simultaneas durante o periodo - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.13.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsPeriodHighOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "4ec3acb57fc544429a227742b39d744d",
+                                "name": "Quantidade total de apreens\u00f5es no periodo - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.16.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsPeriodSeizures.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "10b92e5ea55747b796ada4fa1dde6bd1",
+                                "name": "Status do REALM - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.30.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsRealmStatus.[{#SNMPINDEX}]",
+                                "trigger_prototypes": [
+                                    {
+                                        "uuid": "79a3710009e24f6c9cd671961db50ab8",
+                                        "expression": "avg(/SBC_OCOM/apSigRealmStatsRealmStatus.[{#SNMPINDEX}],#2)=7",
+                                        "name": "Status do REALM - Call Load Reduction - {#REALM_NAME}",
+                                        "priority": "HIGH"
+                                    },
+                                    {
+                                        "uuid": "b7d07efc2e3b425d8c671fef86ebfc64",
+                                        "expression": "avg(/SBC_OCOM/apSigRealmStatsRealmStatus.[{#SNMPINDEX}],#2)=4",
+                                        "name": "Status do REALM - Constraints Violation - {#REALM_NAME}",
+                                        "priority": "HIGH"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "e4873467cf104294b81530dd1344a2d8",
+                                "name": "Quantidade de chamadas que tiveram dura\u00e7\u00e3o inferior a dura\u00e7\u00e3o curta da chamada configurada - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.23.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsShortSessions.[{#SNMPINDEX}]",
+                                "value_type": "CHAR"
+                            },
+                            {
+                                "uuid": "a8be80d8849f4003918984c4ec1f7ff9",
+                                "name": "Peg counts of number of times the Critical Rfactor  threshold was exceeded during the lifetime - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.29.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsTotalCriticalRFactorExceeded.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "37b3b67d3ade417993d5d1dd92ef3442",
+                                "name": "Peg counts of number of times the Major Rfactor  threshold was exceeded during the lifetime - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.27.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsTotalMajorRFactorExceeded.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "d005139e34cc46e4b34d74f4f886d43f",
+                                "name": "Quantidade total de chamadas de entrada - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.7.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsTotalSessionsInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "05ee07eec5b8480389ace45b78c3cf99",
+                                "name": "Quantidade total de chamadas de entrada rejeitadas devido a insufficient bandwidth - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.8.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsTotalSessionsNotAdmittedInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "5fc33bf70d494548a02908c7319709a5",
+                                "name": "Quantidade total de chamadas de saida rejeitadas devido a insufficient bandwidth - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.12.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsTotalSessionsNotAdmittedOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "11bc81100ba24d34be3eb87424744fd5",
+                                "name": "Quantidade total de chamadas de saida - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.11.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsTotalSessionsOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "7db7bd03cdf44d969458c7d959306170",
+                                "name": "Quantidade total de Subscriptions - {#REALM_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.4.1.35.{#SNMPINDEX}",
+                                "key": "apSigRealmStatsTotalSubscriptions.[{#SNMPINDEX}]"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "3dd1e449745141e6b63f552d8f598a29",
+                        "name": "Session Agent",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "discovery[{#AGENT_NAME},.1.3.6.1.4.1.9148.3.2.1.2.2.1.2]",
+                        "key": "apSipSAStatsSessionAgentHostname.discovery",
+                        "lifetime": "30d",
+                        "enabled_lifetime_type": "DISABLE_NEVER",
+                        "item_prototypes": [
+                            {
+                                "uuid": "0f2d39337a0e4371833a7a2fdfe7bb34",
+                                "name": "Latencia maxima de sinaliza\u00e7\u00e3o unidirecional durante o periodo em milissegundos - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.21.{#SNMPINDEX}",
+                                "key": "apSipSAStatsAMedyLatency.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "8fe28d4bdaec4df883dc7542f51b101b",
+                                "name": "Latencia m\u00e9dia de sinaliza\u00e7\u00e3o unidirecional durante o periodo em milissegundos - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.20.{#SNMPINDEX}",
+                                "key": "apSipSAStatsAverageLatency.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "140a8de43d6b45c5addcfbc35b0c1839",
+                                "name": "Taxa m\u00e9dia de chamadas de entradas durante o periodo no CPS - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.11.{#SNMPINDEX}",
+                                "key": "apSipSAStatsAverageRateInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "8bb03e29a9e4436c995394c07c045a62",
+                                "name": "Taxa m\u00e9dia de chamadas de sa\u00edda durante o periodo no CPS - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.15.{#SNMPINDEX}",
+                                "key": "apSipSAStatsAverageRateOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "5c2595915b5a4161895811d0c98221e3",
+                                "name": "Quantidade de chamadas de entradas ativas - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.4.{#SNMPINDEX}",
+                                "key": "apSipSAStatsCurrentActiveSessionsInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "ba52aa59e0e64184b6cb7f51e0f4a784",
+                                "name": "Quantidade de chamadas de sa\u00edda ativas - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.6.{#SNMPINDEX}",
+                                "key": "apSipSAStatsCurrentActiveSessionsOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "484a023ebcb54ab1b74982cb7a6208bd",
+                                "name": "Taxa de chamadas de entradas no CPS - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.5.{#SNMPINDEX}",
+                                "key": "apSipSAStatsCurrentSessionRateInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "d3a20e3d3940472bbf639bab0aa75c0a",
+                                "name": "Taxa de chamadas de sa\u00edda no CPS - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.7.{#SNMPINDEX}",
+                                "key": "apSipSAStatsCurrentSessionRateOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "ac6ae979877147fe81594b35f199a52b",
+                                "name": "Taxa maxima de intermitencia do trafego durante o periodo (entrada e saida) - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.16.{#SNMPINDEX}",
+                                "key": "apSipSAStatsMaxBurstRate.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "fd816cf3336f405cb263cf79152985e7",
+                                "name": "Quantidade total de chamadas respondidas durante o periodo - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.18.{#SNMPINDEX}",
+                                "key": "apSipSAStatsPeriodAnswers.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "088ab128d27542bc9e234948d60c011a",
+                                "name": "Answer-to-seizure em porcentagem - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.19.{#SNMPINDEX}",
+                                "key": "apSipSAStatsPeriodASR.[{#SNMPINDEX}]",
+                                "units": "%"
+                            },
+                            {
+                                "uuid": "7b7949861ebf4bfeb597babc1ccf0d89",
+                                "name": "Quantidade total de chamadas de entrada simultaneas durante o periodo - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.10.{#SNMPINDEX}",
+                                "key": "apSipSAStatsPeriodHighInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "9ceff7b253f343f69333a9e055244fe9",
+                                "name": "Quantidade total de chamadas de sa\u00edda simultaneas durante o periodo - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.14.{#SNMPINDEX}",
+                                "key": "apSipSAStatsPeriodHighOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "4b9649dc8eba45099ec2833e209a90fc",
+                                "name": "Quantidade total de apreens\u00f5es durante o periodo - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.17.{#SNMPINDEX}",
+                                "key": "apSipSAStatsPeriodSeizures.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "705cae7dab504785be8cbcf0f6794d0f",
+                                "name": "Status do Session Agent - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.22.{#SNMPINDEX}",
+                                "key": "apSipSAStatsSessionAgentStatus.[{#SNMPINDEX}]",
+                                "trigger_prototypes": [
+                                    {
+                                        "uuid": "4087979d91694e04bacf3cb518321ba6",
+                                        "expression": "avg(/SBC_OCOM/apSipSAStatsSessionAgentStatus.[{#SNMPINDEX}],#2)=1",
+                                        "name": "Status do Session Agent - {#AGENT_NAME} - Out Of Service",
+                                        "priority": "HIGH"
+                                    },
+                                    {
+                                        "uuid": "5e28dbeb88e14abb835b16abdc1eaa85",
+                                        "expression": "avg(/SBC_OCOM/apSipSAStatsSessionAgentStatus.[{#SNMPINDEX}],#2)=4",
+                                        "name": "Status do Session Agent que \u00e9 expresso como INS, OOSnonresp, OOSconstraintsviolation, BecomingOOS ou ForcedOOS - {#AGENT_NAME} - Constraints Violation",
+                                        "priority": "HIGH"
+                                    },
+                                    {
+                                        "uuid": "d4f997cc81ab4c689da20aa673dcdc62",
+                                        "expression": "avg(/SBC_OCOM/apSipSAStatsSessionAgentStatus.[{#SNMPINDEX}],#2)=5",
+                                        "name": "Status do Session Agent que  \u00e9 expresso como INS, OOSnonresp, OOSconstraintsviolation, BecomingOOS ou ForcedOOS - {#AGENT_NAME} - In Service Timed Out",
+                                        "priority": "HIGH"
+                                    },
+                                    {
+                                        "uuid": "5f3494f5b8d3446bb22072eddb838e69",
+                                        "expression": "avg(/SBC_OCOM/apSipSAStatsSessionAgentStatus.[{#SNMPINDEX}],#2)=6",
+                                        "name": "Status do Session Agent que  \u00e9 expresso como INS, OOSnonresp, OOSconstraintsviolation, BecomingOOS ou ForcedOOS - {#AGENT_NAME} - Oosprovisionedresponse",
+                                        "priority": "HIGH"
+                                    },
+                                    {
+                                        "uuid": "39249eca864c4c268d1055d4bf4732c9",
+                                        "expression": "avg(/SBC_OCOM/apSipSAStatsSessionAgentStatus.[{#SNMPINDEX}],#2)=2",
+                                        "name": "Status do Session Agent que  \u00e9 expresso como INS, OOSnonresp, OOSconstraintsviolation, BecomingOOS ou ForcedOOS - {#AGENT_NAME} - Standby",
+                                        "priority": "HIGH"
+                                    }
+                                ]
+                            },
+                            {
+                                "uuid": "c35ed309dd644f9eae6cc81c901ea445",
+                                "name": "Quantidade total de chamadas de entrada - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.8.{#SNMPINDEX}",
+                                "key": "apSipSAStatsTotalSessionsInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "cc71951c2b7d4fd48039328f2dc33cd8",
+                                "name": "Quantidade total de chamadas de entradas rejeitadas devido a insufficient bandwidth - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.9.{#SNMPINDEX}",
+                                "key": "apSipSAStatsTotalSessionsNotAdmittedInbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "83ec134293d741418f893e8ef4993506",
+                                "name": "Quantidade total de chamadas de sa\u00edda rejeitadas devido a insufficient bandwidth - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.13.{#SNMPINDEX}",
+                                "key": "apSipSAStatsTotalSessionsNotAdmittedOutbound.[{#SNMPINDEX}]"
+                            },
+                            {
+                                "uuid": "38a087910b35422ca8c13e11a7656111",
+                                "name": "Quantidade total de chamadas de sa\u00edda - {#AGENT_NAME}",
+                                "type": "SNMP_AGENT",
+                                "snmp_oid": ".1.3.6.1.4.1.9148.3.2.1.2.2.1.12.{#SNMPINDEX}",
+                                "key": "apSipSAStatsTotalSessionsOutbound.[{#SNMPINDEX}]"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
